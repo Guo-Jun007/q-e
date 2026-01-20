@@ -83,7 +83,7 @@ SUBROUTINE do_q2r(fildyn_, flfrc, prefix, zasr, la2F, loto_2d, write_lr, &
   !
   IF (flfrc == ' ')  CALL errore ('q2r',' bad flfrc',1)
   !
-  xmldyn=has_xml(fildyn_)
+  xmldyn=has_xml(fildyn_) # 判断是否有.xml后缀，并移除后缀
   IF(xmldyn) post='.xml'
   ! 
   IF ( trim( prefix ) /= ' ' ) THEN
