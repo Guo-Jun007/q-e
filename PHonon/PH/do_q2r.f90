@@ -83,7 +83,7 @@ SUBROUTINE do_q2r(fildyn_, flfrc, prefix, zasr, la2F, loto_2d, write_lr, &
   !
   IF (flfrc == ' ')  CALL errore ('q2r',' bad flfrc',1)
   !
-  xmldyn=has_xml(fildyn_) # 判断是否有.xml后缀，并移除后缀
+  xmldyn=has_xml(fildyn_) !判断是否有.xml后缀, 并移除后缀
   IF(xmldyn) post='.xml'
   ! 
   IF ( trim( prefix ) /= ' ' ) THEN
@@ -92,7 +92,7 @@ SUBROUTINE do_q2r(fildyn_, flfrc, prefix, zasr, la2F, loto_2d, write_lr, &
      fildyn = trim(fildyn_)
   END IF
   CALL mp_bcast(fildyn, ionode_id, world_comm)
-  ! 
+  ! !读入动力学矩阵的文件0的前2行, .xml文件和其他文件类型都可以
   IF (ionode) THEN
      OPEN (unit=1, file=TRIM(fildyn)//'0'//post, status='old', form='formatted', &
           iostat=ierr)
